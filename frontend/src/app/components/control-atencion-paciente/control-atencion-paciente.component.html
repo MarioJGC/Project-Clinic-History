@@ -1,0 +1,27 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">CONTROLES</h5>
+        <button type="button" class="btn-close" (click)="CerrarModal()"></button>
+    </div>
+    <div class="modal-body">
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="button" (click)="AbrirHistoriaClinica()"><i
+                    class="fas fa-lg fa-fw me-2 fa-solid fa-paperclip"></i> Historia Clinica</button>
+            <button class="btn btn-primary" type="button" (click)="AbrirInterpretarExamen()"><i
+                    class="fas fa-lg fa-fw me-2 fa-solid fa-file"></i> Interpretacion
+                examenes</button>
+            <button class="btn btn-primary" type="button" (click)="AbrirNotaEvolutiva()"> <i
+                    class="fas fa-lg fa-fw me-2 fa-regular fa-clipboard"></i> Notas evolutivas</button>
+            <button class="btn btn-primary" type="button" (click)="AbrirEpicrisis()"><i
+                    class="fas fa-lg fa-fw me-2 fa-solid fa-notes-medical"></i> Epicrisis</button>
+            <button class="btn btn-primary" type="button" (click)="AbrirConcentimiento()"> <i
+                    class="fas fa-lg fa-fw me-2 fa-solid fa-print"></i> Concentimiento</button>
+            <button class="btn btn-primary" *ngIf="this.esDocente" type="button" (click)="AbrirNotas()"> <i
+                    class="fas fa-lg fa-fw me-2 fa-solid fa-print"></i> Nota</button>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="CerrarModal()"><i
+                class="fas fa-lg fa-fw me-2 fa-sign-out-alt"></i>Salir</button>
+    </div>
+</div>

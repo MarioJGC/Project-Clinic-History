@@ -1,0 +1,57 @@
+<div class="modal-content">
+    <div class="modal-body">
+        <div class="row">
+            <h4>CONCENTIMIENTO INFORMADO</h4>
+        </div>
+        <div class="container">
+            <div class="row">
+
+                <div class="row">
+                    <p>
+                        FECHA: {{fecha}}
+                    </p>
+                </div>
+                <div class="row">
+                    <P>
+                        Yo identificado con DNI (carnet de extranjería o pasaporte para extranjeros) N° <input
+                            type="text" id="inline-input" [(ngModel)]="this.numeroDocumento"
+                            placeholder="numero documento"> he sido informado por el
+                        Dr.
+                        <input type="text" id="inline-input" [(ngModel)]="this.nombreDoctor"
+                            placeholder="nombre del doctor">
+                        acerca de mi enfermedad, los estudios y tratamientos que se requiere.
+                    </P>
+                    <p>
+                        Padezco de <input type="text" id="inline-input" [(ngModel)]="this.nombreEnfermedad"
+                            placeholder="nombre enfermedad"> y el
+                        tratamiento o
+                        procedimiento propuesto consiste en (descripción en términos sencillos) <input type="text"
+                            id="inline-input" placeholder="padecimiento" [(ngModel)]="this.procedimiento">.
+                    </p>
+                    <p>
+                        Me ha informado de los riesgos, ventajas y beneficios del procedimiento, asi como sobre la
+                        posibilidad de tratamientos alternativos <input type="text" id="inline-input"
+                            [(ngModel)]="this.tratamientos" placeholder="tratamientos"> y se ha referido a las
+                        consecuencias del no tratamiento
+                        <input type="text" id="inline-input" placeholder="consecuencias"
+                            [(ngModel)]="this.consecuencias"> He realizado las preguntas
+                        que considere oportunas, todas las cuales han sido absueltas y con respuestas que considero
+                        suficientes y aceptables.
+                    </p>
+                    <p>Por lo tanto, en forma conciente y voluntaria doy mi consentimiento para
+                        que se me realice <input type="text" id="inline-input" placeholder="seRealiza"
+                            [(ngModel)]="this.seRealiza">
+                        Teniendo pleno conocimiento de los posibles riesgos, complicaciones y
+                        beneficios que podrían desprenderse de dicho acto.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="Imprimir()"><i
+                class="fas fa-lg fa-fw me-2 fa-print"></i>Imprimir</button>
+        <button type="button" class="btn btn-danger" (click)="CerrarModal()"><i
+                class="fas fa-lg fa-fw me-2 fa-sign-out-alt"></i>Salir</button>
+    </div>
+</div>

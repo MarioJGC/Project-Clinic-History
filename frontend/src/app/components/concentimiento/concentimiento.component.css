@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+}
+
+p {
+    text-align: justify;
+}
+
+#inline-input {
+    display: inline-block;
+    width: auto;
+    min-width: 100px;
+    margin: 0 5px;
+    vertical-align: middle;
+    padding: 2px 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #000;
+    background: none;
+    outline: none;
+}

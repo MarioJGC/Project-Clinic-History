@@ -1,0 +1,618 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">HISTORIA CLINICA</h5>
+        <button type="button" class="btn-close" (click)="CerrarModal()"></button>
+    </div>
+    <div class="modal-body">
+        <div class="row mb-3">
+            <div class="col-xl-2">
+                <h6>Fecha: {{ this.fechaActual | date : 'dd-MM-yyyy' }}</h6>
+            </div>
+            <div class="col-xl-2">
+                <h6>Hora: {{ this.fechaActual | date : 'HH:mm' }}</h6>
+            </div>
+            <div class="col-xl-4">
+                <h6>H. C. N: {{ this.historiaClinica }} </h6>
+            </div>
+        </div>
+        <section>
+            <form autocomplete="off" novalidate="novalidate" [formGroup]="dataFormGroup">
+                <div class="row mb-3">
+                    <div class="col-xl-12">
+                        <div class="form-separator">
+                            <h5>ECTOSCOPIA:</h5>
+                        </div>
+                        <textarea class="form-control" formControlName="inputEctoscopia" rows="3"></textarea>
+                        <div *ngIf="Controls['inputEctoscopia'].invalid && (Controls['inputEctoscopia'].dirty || Controls['inputEctoscopia'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="form-separator">
+                            <h5>1. ANAMNESIS:</h5>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Apellidos y Nombres:</label>
+                                    <span>{{this.objHistoriaClinica.ApellidoPaterno+'
+                                        '+this.objHistoriaClinica.ApellidoMaterno+'
+                                        '+this.objHistoriaClinica.Nombre}}</span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Fecha nacimiento:</label>
+                                    <span>{{this.objHistoriaClinica.FechaNacimiento | date : 'dd-MM-yyyy'}}</span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Domicilio: </label>
+                                    <span>{{this.objHistoriaClinica.Domicilio}}</span>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Grado de instruccion: </label> <span>-</span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Acompañante: </label> <span>-</span>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Raza: </label> <span>-</span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Lugar: </label>
+                                    <span>{{this.objHistoriaClinica.Lugar}}</span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Estado civil: </label>
+                                    <span>{{this.objHistoriaClinica.EstadoCivil}}</span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Ocupacion: </label>
+                                    <span>{{this.objHistoriaClinica.Ocupacion}}</span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Parentesco: </label> <span>-</span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Telefono: </label>
+                                    <span>{{this.objHistoriaClinica.NumeroCelular}}</span>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Sexo: </label> <span>{{this.objHistoriaClinica.Sexo}}</span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Residencia: </label>
+                                    <span>{{this.objHistoriaClinica.Lugar}}</span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Religion: </label> <span>-</span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Telefono: </label>
+                                    <span>{{this.objHistoriaClinica.NumeroCelular}}</span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">En caso necesario comunicar a: </label>
+                                    <span>{{this.objHistoriaClinica.CelularResponsable}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <textarea class="form-control" formControlName="inputAnamnesis" rows="3"></textarea>
+                        <div *ngIf="Controls['inputAnamnesis'].invalid && (Controls['inputAnamnesis'].dirty || Controls['inputAnamnesis'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-xl-6">
+                        <label for="">MOTIVO DE CONSULTA:</label>
+                        <textarea class="form-control" formControlName="inputMotivoConsulta" rows="2"></textarea>
+                        <div *ngIf="Controls['inputMotivoConsulta'].invalid && (Controls['inputMotivoConsulta'].dirty || Controls['inputMotivoConsulta'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <label for="">ENFERMEDAD ACTUAL:</label>
+                        <textarea class="form-control" formControlName="inputEnfermedadActual" rows="2"></textarea>
+                        <div *ngIf="Controls['inputEnfermedadActual'].invalid && (Controls['inputEnfermedadActual'].dirty || Controls['inputEnfermedadActual'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-xl-12">
+                        <div class="form-separator">
+                            <h6>FUNCIONES BIOLOGICAS:</h6>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">APETITO:</label>
+                        <input class="form-control" formControlName="inputApetito" type="text">
+                        <div *ngIf="Controls['inputApetito'].invalid && (Controls['inputApetito'].dirty || Controls['inputApetito'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">DEPOSICIONES:</label>
+                        <input class="form-control" formControlName="inputDeposiciones" type="text">
+                        <div *ngIf="Controls['inputDeposiciones'].invalid && (Controls['inputDeposiciones'].dirty || Controls['inputDeposiciones'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 mb-1">
+                        <label for="">SED:</label>
+                        <input class="form-control" formControlName="inputSed" type="text">
+                        <div *ngIf="Controls['inputSed'].invalid && (Controls['inputSed'].dirty || Controls['inputSed'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 mb-1">
+                        <label for="">ORINA:</label>
+                        <input class="form-control" formControlName="inputOrina" type="text">
+                        <div *ngIf="Controls['inputOrina'].invalid && (Controls['inputOrina'].dirty || Controls['inputOrina'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 mb-1">
+                        <label for="">SUEÑO:</label>
+                        <input class="form-control" formControlName="inputSuenio" type="text">
+                        <div *ngIf="Controls['inputSuenio'].invalid && (Controls['inputSuenio'].dirty || Controls['inputSuenio'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-xl-12">
+                        <div class="form-separator">
+                            <h6>ANTECEDENTES:</h6>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">PERSONALES:</label>
+                        <input class="form-control" formControlName="inputPersonales" type="text">
+                        <div *ngIf="Controls['inputPersonales'].invalid && (Controls['inputPersonales'].dirty || Controls['inputPersonales'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">PATOLOGICOS:</label>
+                        <input class="form-control" formControlName="inputPatologicos" type="text">
+                        <div *ngIf="Controls['inputPatologicos'].invalid && (Controls['inputPatologicos'].dirty || Controls['inputPatologicos'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">ALERGIAS:</label>
+                        <input class="form-control" formControlName="inputAlergias" type="text">
+                        <div *ngIf="Controls['inputAlergias'].invalid && (Controls['inputAlergias'].dirty || Controls['inputAlergias'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">FAMILIARES:</label>
+                        <input class="form-control" formControlName="inputFamiliares" type="text">
+                        <div *ngIf="Controls['inputFamiliares'].invalid && (Controls['inputFamiliares'].dirty || Controls['inputFamiliares'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-xl-12">
+                        <div class="form-separator">
+                            <h5>2. EXAMEN CLINICO GENERAL:</h5>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 mb-1">
+                        <label for="">PESO:</label>
+                        <input class="form-control" formControlName="inputPeso" type="text">
+                        <div *ngIf="Controls['inputPeso'].invalid && (Controls['inputPeso'].dirty || Controls['inputPeso'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 mb-1">
+                        <label for="">TALLA:</label>
+                        <input class="form-control" formControlName="inputTalla" type="text">
+                        <div *ngIf="Controls['inputTalla'].invalid && (Controls['inputTalla'].dirty || Controls['inputTalla'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 mb-1">
+                        <label for="">IMC:</label>
+                        <input class="form-control" formControlName="inputImc" type="text">
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">BIOTIPO:</label>
+                        <input class="form-control" formControlName="inputBiotipo" type="text">
+                        <div *ngIf="Controls['inputBiotipo'].invalid && (Controls['inputBiotipo'].dirty || Controls['inputBiotipo'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">PIEL:</label>
+                        <input class="form-control" formControlName="inputPiel" type="text">
+                        <div *ngIf="Controls['inputPiel'].invalid && (Controls['inputPiel'].dirty || Controls['inputPiel'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 mb-1">
+                        <label for="">ANEXOS(CABELLO):</label>
+                        <input class="form-control" formControlName="inputCuello" type="text">
+                        <div *ngIf="Controls['inputCuello'].invalid && (Controls['inputCuello'].dirty || Controls['inputCuello'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 mb-1">
+                        <label for="">ANEXOS (UÑAS)::</label>
+                        <input class="form-control" formControlName="inputUnias" type="text">
+                        <div *ngIf="Controls['inputUnias'].invalid && (Controls['inputUnias'].dirty || Controls['inputUnias'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-xl-12">
+                        <div class="form-separator">
+                            <h6>SIGNOS VITALES:</h6>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Presión Arterial:</label>
+                        <input class="form-control" formControlName="inputPresionArterial" type="text">
+                        <div *ngIf="Controls['inputPresionArterial'].invalid && (Controls['inputPresionArterial'].dirty || Controls['inputPresionArterial'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Frecuencia Respiratoria:</label>
+                        <input class="form-control" formControlName="inputFrecuenciaRespiratoria" type="text">
+                        <div *ngIf="Controls['inputFrecuenciaRespiratoria'].invalid && (Controls['inputFrecuenciaRespiratoria'].dirty || Controls['inputFrecuenciaRespiratoria'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Pulso:</label>
+                        <input class="form-control" formControlName="inputPulso" type="text">
+                        <div *ngIf="Controls['inputPulso'].invalid && (Controls['inputPulso'].dirty || Controls['inputPulso'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Temperatura:</label>
+                        <input class="form-control" formControlName="inputTemperatura" type="text">
+                        <div *ngIf="Controls['inputTemperatura'].invalid && (Controls['inputTemperatura'].dirty || Controls['inputTemperatura'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-xl-12">
+                        <div class="form-separator">
+                            <h5>3. EXAMEN CLINICO ESTOMATOLOGICO:</h5>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Facie:</label>
+                        <input class="form-control" formControlName="inputFacie" type="text">
+                        <div *ngIf="Controls['inputFacie'].invalid && (Controls['inputFacie'].dirty || Controls['inputFacie'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Cráneo:</label>
+                        <select class="form-select" formControlName="inpuCraneo">
+                            <option *ngFor="let combo of comboCraneo" [value]="combo.id">
+                                {{combo.nombre}}
+                            </option>
+                        </select>
+                        <div *ngIf="Controls['inpuCraneo'].invalid && (Controls['inpuCraneo'].dirty || Controls['inpuCraneo'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Cara:</label>
+                        <select class="form-select" formControlName="inpuCara">
+                            <option *ngFor="let combo of comboCara" [value]="combo.id">
+                                {{combo.nombre}}
+                            </option>
+                        </select>
+                        <div *ngIf="Controls['inpuCara'].invalid && (Controls['inpuCara'].dirty || Controls['inpuCara'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Simetría:</label>
+                        <select class="form-select" formControlName="inpuSimetria">
+                            <option *ngFor="let combo of comboSimetria" [value]="combo.id">
+                                {{combo.nombre}}
+                            </option>
+                        </select>
+                        <div *ngIf="Controls['inpuSimetria'].invalid && (Controls['inpuSimetria'].dirty || Controls['inpuSimetria'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-xl-12">
+                        <div class="form-separator">
+                            <h6>DOLOR:</h6>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Temporal:</label>
+                        <input class="form-control" formControlName="inputTemporal" type="text">
+                        <div *ngIf="Controls['inputTemporal'].invalid && (Controls['inputTemporal'].dirty || Controls['inputTemporal'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Masetero:</label>
+                        <input class="form-control" formControlName="inputMasetero" type="text">
+                        <div *ngIf="Controls['inputMasetero'].invalid && (Controls['inputMasetero'].dirty || Controls['inputMasetero'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Pterigoideo Interno:</label>
+                        <input class="form-control" formControlName="inputPterigoideoInterno" type="text">
+                        <div *ngIf="Controls['inputPterigoideoInterno'].invalid && (Controls['inputPterigoideoInterno'].dirty || Controls['inputPterigoideoInterno'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Pterigoideo Externo:</label>
+                        <input class="form-control" formControlName="inputPterigoideoExterno" type="text">
+                        <div *ngIf="Controls['inputPterigoideoExterno'].invalid && (Controls['inputPterigoideoExterno'].dirty || Controls['inputPterigoideoExterno'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 mb-1">
+                        <label for="">Digastrico (vientre posterior):</label>
+                        <input class="form-control" formControlName="inputDigastrico" type="text">
+                        <div *ngIf="Controls['inputDigastrico'].invalid && (Controls['inputDigastrico'].dirty || Controls['inputDigastrico'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 mb-1">
+                        <label for="">Esternocleidomastoideo</label>
+                        <input class="form-control" formControlName="inputEsternocleidomastoideo" type="text">
+                        <div *ngIf="Controls['inputEsternocleidomastoideo'].invalid && (Controls['inputEsternocleidomastoideo'].dirty || Controls['inputEsternocleidomastoideo'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+
+                    <div class="col-xl-12">
+                        <div class="form-separator">
+                            <h6>ATM:</h6>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">TRAYECTORIA DE APERTURA Y CIERRE:</label>
+                        <input class="form-control" formControlName="inpuTrayectoria" type="text">
+                        <div *ngIf="Controls['inpuTrayectoria'].invalid && (Controls['inpuTrayectoria'].dirty || Controls['inpuTrayectoria'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">RUIDOS DE LA ATM:</label>
+                        <input class="form-control" formControlName="inputRuidos" type="text">
+                        <div *ngIf="Controls['inputRuidos'].invalid && (Controls['inputRuidos'].dirty || Controls['inputRuidos'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">PALPACION:</label>
+                        <input class="form-control" formControlName="inputPalapacion" type="text">
+                        <div *ngIf="Controls['inputPalapacion'].invalid && (Controls['inputPalapacion'].dirty || Controls['inputPalapacion'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">GRADO DE APERTURA:</label>
+                        <input class="form-control" formControlName="inputGradoApertura" type="text">
+                        <div *ngIf="Controls['inputGradoApertura'].invalid && (Controls['inputGradoApertura'].dirty || Controls['inputGradoApertura'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">GANGLIOS:</label>
+                        <input class="form-control" formControlName="inputGanglios" type="text">
+                        <div *ngIf="Controls['inputGanglios'].invalid && (Controls['inputGanglios'].dirty || Controls['inputGanglios'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-xl-12">
+                        <div class="form-separator">
+                            <h6>3.2. EXAMEN INTRABUCAL</h6>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Labios y Comisura labial:</label>
+                        <input class="form-control" formControlName="inputLabiosComisura" type="text">
+                        <div *ngIf="Controls['inputLabiosComisura'].invalid && (Controls['inputLabiosComisura'].dirty || Controls['inputLabiosComisura'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Paladar Duro y Blando:</label>
+                        <input class="form-control" formControlName="inputPaladarDuro" type="text">
+                        <div *ngIf="Controls['inputPaladarDuro'].invalid && (Controls['inputPaladarDuro'].dirty || Controls['inputPaladarDuro'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Carrillos:</label>
+                        <input class="form-control" formControlName="inputCirgarrillos" type="text">
+                        <div *ngIf="Controls['inputCirgarrillos'].invalid && (Controls['inputCirgarrillos'].dirty || Controls['inputCirgarrillos'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Piso de boca:</label>
+                        <input class="form-control" formControlName="inputPisoBoca" type="text">
+                        <div *ngIf="Controls['inputPisoBoca'].invalid && (Controls['inputPisoBoca'].dirty || Controls['inputPisoBoca'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Lengua:</label>
+                        <input class="form-control" formControlName="inputLengua" type="text">
+                        <div *ngIf="Controls['inputLengua'].invalid && (Controls['inputLengua'].dirty || Controls['inputLengua'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Orofaringe:</label>
+                        <input class="form-control" formControlName="inputOrofaringe" type="text">
+                        <div *ngIf="Controls['inputOrofaringe'].invalid && (Controls['inputOrofaringe'].dirty || Controls['inputOrofaringe'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Frenillos:</label>
+                        <input class="form-control" formControlName="inputFrenillos" type="text">
+                        <div *ngIf="Controls['inputFrenillos'].invalid && (Controls['inputFrenillos'].dirty || Controls['inputFrenillos'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 mb-1">
+                        <label for="">Saliva:</label>
+                        <input class="form-control" formControlName="inputSaliva" type="text">
+                        <div *ngIf="Controls['inputSaliva'].invalid && (Controls['inputSaliva'].dirty || Controls['inputSaliva'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-xl-12 mb-1">
+                        <div class="col-xl-12">
+                            <div class="form-separator">
+                                <h5>4. RESUMEN DE LA ANAMNESIS Y EXAMEN CLINICO</h5>
+                            </div>
+                        </div>
+                        <textarea class="form-control" formControlName="inputResumenAnamnesis" rows="3"></textarea>
+                        <div *ngIf="Controls['inputResumenAnamnesis'].invalid && (Controls['inputResumenAnamnesis'].dirty || Controls['inputResumenAnamnesis'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-xl-12">
+                        <div class="form-separator">
+                            <h5>5. DIAGNOSTICO PRESUNTIVO – CIE 11:</h5>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 mb-1">
+                        <textarea class="form-control" formControlName="inputDiagnosticoIngreso" rows="3"></textarea>
+                        <div *ngIf="Controls['inputDiagnosticoIngreso'].invalid && (Controls['inputDiagnosticoIngreso'].dirty || Controls['inputDiagnosticoIngreso'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-xl-12">
+                        <div class="form-separator">
+                            <h5>6. EXAMENES AUXILIARES</h5>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 mb-1">
+                        <textarea class="form-control" formControlName="inputExamenAuxiliar" rows="3"></textarea>
+                        <div *ngIf="Controls['inputExamenAuxiliar'].invalid && (Controls['inputExamenAuxiliar'].dirty || Controls['inputExamenAuxiliar'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+
+                    <div class="col-xl-12">
+                        <div class="form-separator">
+                            <h5>7. DIAGNOSTICO DEFINITIVO - CIE 11:</h5>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 mb-1">
+                        <textarea class="form-control" formControlName="inputDiagnosticoSalida" rows="3"></textarea>
+                        <div *ngIf="Controls['inputDiagnosticoSalida'].invalid && (Controls['inputDiagnosticoSalida'].dirty || Controls['inputDiagnosticoSalida'].touched)"
+                            class="text-danger">
+                            <div>Campo obligatorio.</div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary" (click)="Guardar()"><i
+                class="fas fa-lg fa-fw me-2 fa-save"></i>Guardar</button>
+        <button type="button" class="btn btn-danger" (click)="CerrarModal()"><i
+                class="fas fa-lg fa-fw me-2 fa-sign-out-alt"></i>Salir</button>
+    </div>
+</div>
