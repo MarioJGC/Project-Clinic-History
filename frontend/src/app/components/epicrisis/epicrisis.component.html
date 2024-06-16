@@ -1,0 +1,26 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">EPICRISIS</h5>
+        <button type="button" class="btn-close" (click)="CerrarModal()"></button>
+    </div>
+    <div class="modal-body">
+        <div class="form-separator">
+            <h5>DESCRIBA LA EPICRISIS</h5>
+        </div>
+        <div class="row">
+            <form autocomplete="off" novalidate="novalidate" [formGroup]="dataFormGroup">
+                <textarea class="form form-control" rows="8" formControlName="textEpicrisis"></textarea>
+                <div *ngIf="Controls['textEpicrisis'].invalid && (Controls['textEpicrisis'].dirty || Controls['textEpicrisis'].touched)"
+                    class="text-danger">
+                    <div>Campo obligatorio.</div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="Guardar()"><i
+                class="fas fa-lg fa-fw me-2 fa-save"></i>Guardar</button>
+        <button type="button" class="btn btn-danger" (click)="CerrarModal()"><i
+                class="fas fa-lg fa-fw me-2 fa-sign-out-alt"></i>Salir</button>
+    </div>
+</div>

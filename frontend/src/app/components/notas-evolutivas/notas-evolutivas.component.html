@@ -1,0 +1,69 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">NOTAS EVOLUTIVAS</h5>
+        <button type="button" class="btn-close" (click)="CerrarModal()"></button>
+    </div>
+    <div class="modal-body">
+        <div class="form-separator">
+            <h5>DESCRIBA LAS NOTAS</h5>
+        </div>
+        <div class="row">
+            <form autocomplete="off" novalidate="novalidate" [formGroup]="dataFormGroup">
+                <div class="row">
+                    <div class="col-xl-3">
+                        <div class="mb-3">
+                            <label class="form-label">Fecha del control</label>
+                            <input type="date" class="form-control" formControlName="inputFechaRegistro">
+                        </div>
+                    </div>
+                    <div class="col-xl-7">
+                        <div class="mb-3">
+                            <label class="form-label">Descripcion</label>
+                            <input type="text" class="form-control" formControlName="inputDescripcion">
+                        </div>
+                    </div>
+                    <div class="col-xl-2 mt-4">
+                        <button type="button" class="btn btn-primary" (click)="AgregarLista()"><i
+                                class="fas fa-lg fa-fw me-2 fa-plus"></i>Añadir</button>
+                    </div>
+                </div>
+            </form>
+            <div class="form-separator">
+                <h5>DETALLE</h5>
+            </div>
+            <div class="row">
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Detalle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let lista of listadoEvolutivo; index as i">
+                            <tr>
+                                <th>{{i+1}}</th>
+                                <td>{{lista.Fecha}}</td>
+                                <td>{{lista.Detalle}}</td>
+                            </tr>
+                        </ng-container>
+                        <ng-container *ngFor="let lista of listadoEvolutivoNuevo; index as i">
+                            <tr>
+                                <th>{{i+1}}</th>
+                                <td>{{lista.Fecha}}</td>
+                                <td>{{lista.Detalle}}</td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="Guardar()"><i
+                class="fas fa-lg fa-fw me-2 fa-save"></i>Guardar</button>
+        <button type="button" class="btn btn-danger" (click)="CerrarModal()"><i
+                class="fas fa-lg fa-fw me-2 fa-sign-out-alt"></i>Salir</button>
+    </div>
+</div>

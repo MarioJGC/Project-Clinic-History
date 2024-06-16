@@ -1,0 +1,58 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">INTERPRETAR EXAMEN</h5>
+        <button type="button" class="btn-close" (click)="CerrarModal()"></button>
+    </div>
+    <div class="modal-body">
+        <form autocomplete="off" novalidate="novalidate" [formGroup]="dataFormGroup">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="form-separator">
+                        <h5>INTERPRETACION RADIOGRAFICA - PANORAMICA (ORTOPANTOMOGRAFIA) / PERIAPICAL</h5>
+                    </div>
+                    <textarea class="form-control" formControlName="inputPanoramica" rows="3"></textarea>
+                    <div *ngIf="Controls['inputPanoramica'].invalid && (Controls['inputPanoramica'].dirty || Controls['inputPanoramica'].touched)"
+                        class="text-danger">
+                        <div>Campo obligatorio.</div>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="form-separator">
+                        <h5>INTERPRETACION DE EXAMENES DE LABORATORIO - HEMOGRAMA</h5>
+                    </div>
+                    <textarea class="form-control" formControlName="inputHmanograma" rows="3"></textarea>
+                    <div *ngIf="Controls['inputHmanograma'].invalid && (Controls['inputHmanograma'].dirty || Controls['inputHmanograma'].touched)"
+                        class="text-danger">
+                        <div>Campo obligatorio.</div>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="form-separator">
+                        <h5>TIEMPO DE SANGRÍA</h5>
+                    </div>
+                    <textarea class="form-control" formControlName="inputTiempoSangria" rows="3"></textarea>
+                    <div *ngIf="Controls['inputTiempoSangria'].invalid && (Controls['inputTiempoSangria'].dirty || Controls['inputTiempoSangria'].touched)"
+                        class="text-danger">
+                        <div>Campo obligatorio.</div>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="form-separator">
+                        <h5>TIEMPO DE COAGULACIÓN</h5>
+                    </div>
+                    <textarea class="form-control" formControlName="inputCoagulacion" rows="3"></textarea>
+                    <div *ngIf="Controls['inputCoagulacion'].invalid && (Controls['inputCoagulacion'].dirty || Controls['inputCoagulacion'].touched)"
+                        class="text-danger">
+                        <div>Campo obligatorio.</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="Guardar()"><i
+                class="fas fa-lg fa-fw me-2 fa-save"></i>Guardar</button>
+        <button type="button" class="btn btn-danger" (click)="CerrarModal()"><i
+                class="fas fa-lg fa-fw me-2 fa-sign-out-alt"></i>Salir</button>
+    </div>
+</div>
