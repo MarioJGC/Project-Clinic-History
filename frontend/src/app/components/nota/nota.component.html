@@ -1,0 +1,22 @@
+<div class="modal-content">
+    <div class="modal-body">
+        <div class="row">
+            <h4>CONCENTIMIENTO INFORMADO</h4>
+        </div>
+        <div class="row">
+            <form autocomplete="off" novalidate="novalidate" [formGroup]="dataFormGroup">
+                <textarea class="form form-control" rows="8" formControlName="textNotas"></textarea>
+                <div *ngIf="Controls['textNotas'].invalid && (Controls['textNotas'].dirty || Controls['textNotas'].touched)"
+                    class="text-danger">
+                    <div>Campo obligatorio.</div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="Guardar()"><i
+                class="fas fa-lg fa-fw me-2 fa-print"></i>Guardar</button>
+        <button type="button" class="btn btn-danger" (click)="CerrarModal()"><i
+                class="fas fa-lg fa-fw me-2 fa-sign-out-alt"></i>Salir</button>
+    </div>
+</div>
